@@ -1,4 +1,4 @@
-package com.example.android.articlehome
+package com.example.android.articlehome.fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -31,10 +31,6 @@ class FavouriteFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        binding.buttonSecond.setOnClickListener {
-            findNavController().navigate(R.id.action_SecondFragment_to_FirstFragment)
-        }
     }
 
     override fun onDestroyView() {

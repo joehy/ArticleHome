@@ -7,9 +7,9 @@
 
     <fragment
         android:id="@+id/FirstFragment"
-        android:name="com.example.android.articlehome.FirstFragment"
-        android:label="@string/first_fragment_label"
-        tools:layout="@layout/fragment_first">
+        android:name="com.example.android.articlehome.fragments.ArticalHomeFragment"
+        android:label="@string/article_page"
+        tools:layout="@layout/fragment_artical_home">
 
         <action
             android:id="@+id/action_FirstFragment_to_SecondFragment"
@@ -17,8 +17,8 @@
     </fragment>
     <fragment
         android:id="@+id/SecondFragment"
-        android:name="com.example.android.articlehome.FavouriteFragment"
-        android:label="@string/second_fragment_label"
+        android:name="com.example.android.articlehome.fragments.FavouriteFragment"
+        android:label="@string/favourite_articles"
         tools:layout="@layout/fragment_favourite">
 
         <action

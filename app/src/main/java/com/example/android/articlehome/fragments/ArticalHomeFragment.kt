@@ -1,15 +1,15 @@
-package com.example.android.articlehome
+package com.example.android.articlehome.fragments
 
 import android.os.Bundle
 import android.view.*
-import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import com.example.android.articlehome.databinding.FragmentFirstBinding
+import com.example.android.articlehome.R
+import com.example.android.articlehome.databinding.FragmentArticalHomeBinding
 
-class FirstFragment : Fragment() {
+class ArticalHomeFragment : Fragment() {
 
-    private var _binding: FragmentFirstBinding? = null
+    private var _binding: FragmentArticalHomeBinding? = null
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -19,7 +19,7 @@ class FirstFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
 
-        _binding =  FragmentFirstBinding.inflate(inflater, container, false)
+        _binding =  FragmentArticalHomeBinding.inflate(inflater, container, false)
         setHasOptionsMenu(true)
         return binding.root
 
