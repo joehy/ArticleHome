@@ -47,8 +47,8 @@ class ArticlesAdapter(private val clickListener:ArticlesListener) : ListAdapter<
             return oldItem==newItem
         }
     }
-    class ArticlesListener(val clickListener:(asteroid:ArticleModel)->Unit){
-        fun onClick (asteroid:ArticleModel)=clickListener(asteroid)
+    class ArticlesListener(val clickListener:(article:ArticleModel)->Unit){
+        fun onClick (article:ArticleModel)=clickListener(article)
     }
 
 }

@@ -1,25 +1,18 @@
 package com.example.android.articlehome.fragments
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
-import android.provider.MediaStore.Video
-import android.util.Log
 import android.view.*
 import androidx.core.view.MenuHost
 import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.example.android.articlehome.R
 import com.example.android.articlehome.adapter.ArticlesAdapter
-import com.example.android.articlehome.api.Network
 import com.example.android.articlehome.databinding.FragmentArticalHomeBinding
-import com.example.android.articlehome.models.ArticleModel
 import com.example.android.articlehome.viewmodels.ArticlesViewModel
-import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
-import kotlinx.coroutines.launch
-import org.json.JSONObject
 import timber.log.Timber
 
 
@@ -39,7 +32,8 @@ class ArticleHomeFragment : Fragment() {
         _binding =  FragmentArticalHomeBinding.inflate(inflater, container, false)
         addMenuItem()
         articlesAdapter= ArticlesAdapter(ArticlesAdapter.ArticlesListener {
-            //TODO findNavController().navigate(MainFragmentDirections.actionShowDetail(it))
+            findNavController().navigate(ArticleHomeFragmentDirections.actionFirstFragmentToWebViewFragment(it))
+
         })
         binding.articlesRecycler.adapter=articlesAdapter
         viewModel.articles.observe(viewLifecycleOwner) {

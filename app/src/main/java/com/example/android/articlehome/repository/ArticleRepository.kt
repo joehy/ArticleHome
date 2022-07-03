@@ -13,7 +13,7 @@ class ArticleRepository (private val asteroidDataBase:ArticleDataBase){
     var allSavedArticles: LiveData<List<ArticleModel>> =asteroidDataBase.articleDao.getAllArticles()
     suspend fun insertArticle(article:ArticleModel){
         withContext(Dispatchers.IO){
-            asteroidDataBase.articleDao.insertAllArticle(article)
+            asteroidDataBase.articleDao.insertArticle(article)
         }
     }
 }

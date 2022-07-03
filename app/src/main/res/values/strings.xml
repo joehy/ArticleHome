@@ -14,4 +14,6 @@
     <string name="article_title">Article Title</string>
     <string name="article_date">article_date</string>
     <string name="article_category">Article Category</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

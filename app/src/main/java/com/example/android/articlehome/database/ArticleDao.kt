@@ -10,7 +10,7 @@ import com.example.android.articlehome.models.ArticleModel
 @Dao
 interface ArticleDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertAllArticle(vararg articleModel: ArticleModel)
+    fun insertArticle( vararg articleModel: ArticleModel)
     @Query("SELECT * FROM article_table")
     fun getAllArticles(): LiveData<List<ArticleModel>>  // No need for a suspend function since LiveData is already asynchronous.
 }

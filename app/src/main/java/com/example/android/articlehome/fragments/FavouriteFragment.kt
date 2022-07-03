@@ -5,14 +5,21 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import com.example.android.articlehome.adapter.ArticlesAdapter
 import com.example.android.articlehome.databinding.FragmentFavouriteBinding
+import com.example.android.articlehome.viewmodels.ArticlesViewModel
+import timber.log.Timber
 
 /**
  * A simple [Fragment] subclass as the second destination in the navigation.
  */
 class FavouriteFragment : Fragment() {
-
+    private lateinit var articlesAdapter: ArticlesAdapter
+    private val viewModel: ArticlesViewModel by lazy {
+        ViewModelProvider(this)[ArticlesViewModel::class.java]
+    }
     private var _binding: FragmentFavouriteBinding? = null
 
     // This property is only valid between onCreateView and
@@ -25,13 +32,20 @@ class FavouriteFragment : Fragment() {
     ): View? {
 
         _binding = FragmentFavouriteBinding.inflate(inflater, container, false)
+        articlesAdapter= ArticlesAdapter(ArticlesAdapter.ArticlesListener {
+            findNavController().navigate(FavouriteFragmentDirections.actionSecondFragmentToWebViewFragment(it))
+        })
+        binding.articlesRecycler.adapter=articlesAdapter
+        viewModel.allSavedArticles.observe(viewLifecycleOwner) {
+            if (it != null) {
+                articlesAdapter.submitList(it)
+            } else {
+                Timber.v("article list is empty")
+            }
+        }
         return binding.root
-
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-    }
 
     override fun onDestroyView() {
         super.onDestroyView()

@@ -6,7 +6,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.android.articlehome.api.Network
-import com.example.android.articlehome.database.ArticleDataBase.Companion.getDatabase
+import com.example.android.articlehome.database.getDataBase
 import com.example.android.articlehome.models.ArticleModel
 import com.example.android.articlehome.repository.ArticleRepository
 import com.google.gson.Gson
@@ -15,7 +15,7 @@ import kotlinx.coroutines.launch
 import org.json.JSONObject
 
 class ArticlesViewModel(application: Application) : AndroidViewModel(application){
-    private val database = getDatabase(application)
+    private val database = getDataBase(application)
     private val appRepository=ArticleRepository(database)
 
     val allSavedArticles = appRepository.allSavedArticles
@@ -27,7 +27,11 @@ class ArticlesViewModel(application: Application) : AndroidViewModel(application
             refreshArticles()
         }
     }
-
+    fun saveFavouriteArticle(articleModel: ArticleModel){
+        viewModelScope.launch {
+            appRepository.insertArticle(articleModel)
+        }
+    }
     private suspend fun refreshArticles(){
             Network.service.getArticlesAsync("edaca808-eed7-450f-9860-0374e7fc2e49").await().let {
             val result = JSONObject(it.string()).getJSONObject("response").getJSONArray("results").toString()
