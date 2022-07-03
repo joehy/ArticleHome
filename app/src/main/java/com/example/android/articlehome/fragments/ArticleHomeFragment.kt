@@ -7,6 +7,7 @@ import android.view.*
 import androidx.core.view.MenuHost
 import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.android.articlehome.R
@@ -51,6 +52,7 @@ class ArticleHomeFragment : Fragment() {
         menuHost.addMenuProvider(object : MenuProvider {
             override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
                 // Add menu items here
+
                 menuInflater.inflate(R.menu.option, menu)
             }
 
@@ -60,7 +62,7 @@ class ArticleHomeFragment : Fragment() {
                 }
                 return true
             }
-        })
+        },viewLifecycleOwner, Lifecycle.State.RESUMED)
     }
 
     override fun onDestroyView() {
