@@ -1,9 +1,12 @@
 package com.example.android.articlehome.fragments
 
+import android.content.Context
 import android.content.Intent
+import android.net.ConnectivityManager
 import android.net.Uri
 import android.os.Bundle
 import android.view.*
+import android.widget.Toast
 import androidx.core.view.MenuHost
 import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
@@ -37,6 +40,15 @@ class ArticleHomeFragment : Fragment() {
 
         })
         binding.articlesRecycler.adapter=articlesAdapter
+
+        val connection = context!!.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        if(connection.activeNetwork!=null){
+            viewModel.refreshArticles()
+        }else{
+            Timber.v("connection is not fount ")
+            Toast.makeText(requireActivity(),"Check Your internet connection",Toast.LENGTH_LONG).show()
+        }
+
         viewModel.articles.observe(viewLifecycleOwner) {
             if (it != null) {
                 articlesAdapter.submitList(it)
