@@ -8,7 +8,6 @@ import androidx.room.TypeConverters
 import com.example.android.articlehome.models.ArticleModel
 
 @Database(entities = [ArticleModel::class], version = 1, exportSchema = false)
-@TypeConverters(Converters::class)
 abstract class ArticleDataBase: RoomDatabase() {
 
     abstract val articleDao: ArticleDao
