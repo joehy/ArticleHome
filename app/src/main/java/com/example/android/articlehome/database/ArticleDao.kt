@@ -13,5 +13,4 @@ interface ArticleDao {
     suspend fun insertAllArticle(vararg articleModel: ArticleModel)
     @Query("SELECT * FROM article_table")
     fun getAllArticles(): LiveData<List<ArticleModel>>  // No need for a suspend function since LiveData is already asynchronous.
-
 }

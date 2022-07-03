@@ -13,4 +13,5 @@
     <string name="favourite_menu_option">Favourite</string>
     <string name="article_title">Article Title</string>
     <string name="article_date">article_date</string>
+    <string name="article_category">Article Category</string>
 </resources>

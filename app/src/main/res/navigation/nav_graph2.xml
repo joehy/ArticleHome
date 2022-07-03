@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/FirstFragment"
-        android:name="com.example.android.articlehome.fragments.ArticalHomeFragment"
+        android:name="com.example.android.articlehome.fragments.ArticleHomeFragment"
         android:label="@string/article_page"
         tools:layout="@layout/fragment_artical_home">
 
